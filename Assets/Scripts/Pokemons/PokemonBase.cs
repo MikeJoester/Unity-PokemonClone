@@ -4,17 +4,20 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Pokemon_Creator", menuName = "PokemonClone/Create New Pokemon", order = 0)]
 public class PokemonBase : ScriptableObject   {
-    [SerializeField] string name;
+    [SerializeField] string pokeName;
     
     [TextArea]
 
+    //Appearance/Description of Pokemon
     [SerializeField] string description;
     [SerializeField] Sprite frontSprite;
     [SerializeField] Sprite backSprite;
 
+    //Pokemon Type(s)
     [SerializeField] PokemonType type1;
     [SerializeField] PokemonType type2;
 
+    //Pokemon Stats
     [SerializeField] int maxHP;
     [SerializeField] int atk;
     [SerializeField] int def;
@@ -22,8 +25,11 @@ public class PokemonBase : ScriptableObject   {
     [SerializeField] int spDef;
     [SerializeField] int speed;
 
+    //List of Learnable moves of Pokemon
+    [SerializeField] List<LearnableMove> learnableMoves;
+
     public string Name {
-        get { return name; }
+        get { return pokeName; }
     }
 
     public string Description {
@@ -53,25 +59,30 @@ public class PokemonBase : ScriptableObject   {
     public int Spd {
         get { return speed; }
     }
+
+    public List<LearnableMove> LearnableMoves {
+        get {return learnableMoves;}
+    }
+}
+
+[System.Serializable]
+public class LearnableMove {
+    [SerializeField] MoveBase moveBase;
+    [SerializeField] int level;
+
+    public MoveBase Base {
+        get {return moveBase;}
+    }
+
+    public int Level {
+        get { return level;}
+    }
 }
 
 public enum PokemonType {
-    Normal, 
-    Fire, 
-    Water, 
-    Grass, 
-    Flying, 
-    Fighting, 
-    Poison, 
-    Electric, 
-    Ground, 
-    Rock, 
-    Psychic, 
-    Ice, 
-    Bug, 
-    Ghost, 
-    Steel, 
-    Dragon, 
-    Dark, 
-    Fairy
+    Normal, Fire, Water, Grass, 
+    Flying, Fighting, Poison, 
+    Electric, Ground, Rock, 
+    Psychic, Ice, Bug, Ghost, 
+    Steel, Dragon, Dark, Fairy
 }
