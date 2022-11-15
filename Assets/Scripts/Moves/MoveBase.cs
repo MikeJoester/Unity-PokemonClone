@@ -14,7 +14,7 @@ public class MoveBase : ScriptableObject {
     [SerializeField] int accuracy;
     [SerializeField] int pp;
 
-    public string Name { 
+    public string Name {
         get { return moveName; }
     }
 
